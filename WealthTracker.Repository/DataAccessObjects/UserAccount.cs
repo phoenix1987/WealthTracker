@@ -26,6 +26,11 @@ namespace WealthTracker.Repository.DataAccessObjects
         [MaxLength(200)]
         public string LastName { get; set; } = string.Empty;
 
+        [Required]
+        [MaxLength(200)]
+        public string Email { get; set; } = string.Empty;
+        public int RetryAttempts { get; set; } = 0;
+
         [MaxLength(25)]
         public string? PhoneNumber { get; set; }
 

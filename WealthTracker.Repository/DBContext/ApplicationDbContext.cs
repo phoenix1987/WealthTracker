@@ -26,5 +26,7 @@ namespace WealthTracker.Repository.DBContext
                 .HasForeignKey<UserAccount>(u => u.IdentityUserId);
 
         }
+
+        public DbSet<UserAccount> UserAccount { get; set; }
     }
 }
