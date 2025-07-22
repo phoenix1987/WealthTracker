@@ -6,6 +6,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
 @using WealthTracker.Shared.DataAccess
+@using WealthTracker.Shared.DTOs
+@* @using WealthTracker.Services *@
 
 @inject UserManager<ApplicationUser> UserManager
 @inject IUserStore<ApplicationUser> UserStore
@@ -65,6 +67,7 @@
 </div>
 
 @code {
+//    private readonly IUserAccountService _userAccountService;
     private IEnumerable<IdentityError>? identityErrors;
 
     [SupplyParameterFromForm]
@@ -74,6 +77,8 @@
     private string? ReturnUrl { get; set; }
 
     private string? Message => identityErrors is null ? null : $"Error: {string.Join(", ", identityErrors.Select(error => error.Description))}";
+
+    
 
     public async Task RegisterUser(EditContext editContext)
     {
@@ -90,15 +95,17 @@
             return;
         }
         // Create a UserAccount entry
-        var userAccount = new UserAccount
-            {
-                IdentityUserId = userId, // or user.Id
-                Email = Input.Email,
-                LastLoggedIn = DateTime.UtcNow,
-                RetryAttempts = 0,
-                PaymentPlan = "Free", // or default
-                                      // any other fields...
-            };
+        // var userAccount = new UserAccountDTO
+        //     {
+        //         IdentityUserId = userId, // or user.Id
+        //         Email = Input.Email,
+        //         LastLoggedIn = DateTime.UtcNow,
+        //         RetryAttempts = 0,
+        //         PaymentPlan = "Free", // or default
+        //                               // any other fields...
+        //     };
+
+        
         Logger.LogInformation("User created a new account with password.");
 
         var userId = await UserManager.GetUserIdAsync(user);

@@ -9,5 +9,7 @@ namespace WealthTracker.Services.Services
 {
     public class UserAccountService : IUserAccountService
     {
+        public async Task CreateUserAccountAsync()
+        { }
     }
 }

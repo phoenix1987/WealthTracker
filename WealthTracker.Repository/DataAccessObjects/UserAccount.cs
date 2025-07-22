@@ -39,7 +39,6 @@ namespace WealthTracker.Repository.DataAccessObjects
 
         public DateTime LastLoggedIn { get; set; } = DateTime.UtcNow;
 
-        public int RetryAttempts { get; set; } = 0;
         public ApplicationUser? IdentityUser { get; set; }
     }
 }
